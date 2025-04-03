@@ -101,20 +101,21 @@ const MovieDetails = () => {
             </Text>
             <Text className="text-light-200 text-sm ">{movie?.runtime}m</Text>
           </View>
-          <View className="flex-row items-center justify-between mt-2">
-            <View className="flex-row items-center bg-dark-100 px-3 py-2 rounded-md gap-x-2 flex-1">
-              <Image source={icons.star} className="size-4" />
-              <View className="flex-1">
-              <Text className="text-white font-bold text-sm">
-                {movie?.vote_average ?? 0}/10
-              </Text>
-              <Text className="text-light-200 text-sm">
-                {movie?.vote_count} votes
-              </Text>
+          <View className="flex-row items-center mt-2">
+            <View className="flex-row items-center bg-dark-100 px-3 py-2 rounded-md">
+              <Image source={icons.star} className="w-4 h-4" />
+              <View className="ml-2">
+                <Text className="text-white font-bold text-sm">
+                  {movie?.vote_average ?? 0}/10
+                </Text>
+                <Text className="text-light-200 text-sm">
+                  {movie?.vote_count} votes
+                </Text>
               </View>
             </View>
+            <View className="flex-1" />
             <TouchableOpacity
-              className="px-2 py-1 rounded-md"
+              className="px-3 py-2 rounded-md"
               onPress={async () => {
                 if (isSaved) {
                   await handleUnsave(movie?.id);
@@ -124,8 +125,8 @@ const MovieDetails = () => {
               }}
             >
               <Image
-                source={isSaved ? icons.star : icons.save} // Icône dynamique
-                className="size-4 ml-[180px]"
+                source={isSaved ? icons.star : icons.save} 
+                className="w-8 h-8"
                 tintColor="#fff"
               />
             </TouchableOpacity>

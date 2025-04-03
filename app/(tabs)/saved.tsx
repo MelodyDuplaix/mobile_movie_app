@@ -18,7 +18,15 @@ export default function Saved() {
 
     useFocusEffect(
         useCallback(() => {
-            refetch().finally(() => setIsFirstLoad(false));
+            let isActive = true; 
+            refetch().finally(() => {
+                if (isActive) {
+                    setIsFirstLoad(false);
+                }
+            });
+            return () => {
+                isActive = false;
+            };
         }, [refetch])
     );
 
