@@ -66,13 +66,11 @@ const _Layout = () => {
                     title: "Home",
                     headerShown: false,
                     tabBarIcon: ({focused}) => (
-                        <>
                             <TabIcon
                                 focused={focused}
                                 icon={icons.home}
                                 title="Home"
-                            />
-                        </>)
+                            />)
                 }}
             />
             <Tabs.Screen
@@ -81,13 +79,11 @@ const _Layout = () => {
                     title: "Search",
                     headerShown: false,
                     tabBarIcon: ({focused}) => (
-                        <>
                             <TabIcon
                                 focused={focused}
                                 icon={icons.search}
                                 title="Search"
                             />
-                        </>
                     )}}
             />
             <Tabs.Screen
@@ -96,13 +92,11 @@ const _Layout = () => {
                     title: "Saved",
                     headerShown: false,
                     tabBarIcon: ({focused}) => (
-                        <>
                             <TabIcon
                                 focused={focused}
                                 icon={icons.save}
                                 title="Saved"
                             />
-                        </>
                     )
                 }}
             />
@@ -112,13 +106,11 @@ const _Layout = () => {
                     title: "Profile",
                     headerShown: false,
                     tabBarIcon: ({focused}) => (
-                        <>
                             <TabIcon
                                 focused={focused}
                                 icon={icons.person}
                                 title="Profile"
                             />
-                        </>
                     )
                 }}
             />

@@ -10,7 +10,6 @@ import SearchBar from "@/components/SearchBar";
 import { updateSearchCount } from "@/services/appwrite";
 
 const Search = () => {
-    console.warn("Search component is rendering");
     const [searchQuery, setsearchQuery] = useState("");
 
     const {

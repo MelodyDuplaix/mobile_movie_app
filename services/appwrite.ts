@@ -54,20 +54,20 @@ export const getTrendingMovies = async (): Promise<TrendingMovie[] | undefined> 
 };
 
 
-export const getSavedMovies = async (): Promise<SavedMovie[] | undefined> => {
+export const getSavedMovies = async (): Promise<Movie[] | undefined> => {
     try {
         const result = await database.listDocuments(DATABASE_ID, SAVEDCOLLECTION_ID, [
             Query.limit(5),
         ])
 
-        return result.documents as unknown as SavedMovie[];
+        return result.documents as unknown as Movie[];
     } catch (error) {
         console.error("Error in getSavedMovies:", error);
         throw error;
     }
 };
 
-export const saveMovie = async (movie: SavedMovie) => {
+export const saveMovie = async (movie: Movie) => {
     try {
         await database.createDocument(DATABASE_ID, SAVEDCOLLECTION_ID, ID.unique(), movie);
     } catch (error) {
@@ -80,11 +80,11 @@ export const getIsSavedMovie = async (movie_id: number): Promise<boolean> => {
     try {
         const movieIdAsNumber = Number(movie_id);
         if (isNaN(movieIdAsNumber)) {
-            throw new Error("Invalid movie_id: not a number");
+            throw new Error("Invalid id: not a number");
         }
 
         const result = await database.listDocuments(DATABASE_ID, SAVEDCOLLECTION_ID, [
-            Query.equal('movie_id', movieIdAsNumber),
+            Query.equal('id', movieIdAsNumber),
         ]);
 
         return result.documents.length > 0;
@@ -98,11 +98,11 @@ export const deleteSavedMovie = async (movie_id: number) => {
     try {
         const movieIdAsNumber = Number(movie_id);
         if (isNaN(movieIdAsNumber)) {
-            throw new Error("Invalid movie_id: not a number");
+            throw new Error("Invalid id: not a number");
         }
 
         const result = await database.listDocuments(DATABASE_ID, SAVEDCOLLECTION_ID, [
-            Query.equal('movie_id', movieIdAsNumber),    
+            Query.equal('id', movieIdAsNumber),    
         ]);
         if (result.documents.length > 0) {
             const documentId = result.documents[0].$id;

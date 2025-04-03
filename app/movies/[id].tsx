@@ -51,12 +51,20 @@ const MovieDetails = () => {
   const handleSave = async (movie: any) => {
     try {
       await saveMovie({
-        movie_id: movie?.id,
+        id: movie?.id,
         title: movie?.title,
         poster_path: movie?.poster_path,
         release_date: movie?.release_date,
         vote_average: movie?.vote_average,
         original_language: movie?.original_language,
+        overview: movie?.overview,
+        backdrop_path: movie?.backdrop_path,
+        vote_count: movie?.vote_count,
+        adult: movie?.adult,
+        genre_ids: movie?.genre_ids,
+        original_title: movie?.original_title,
+        video: movie?.video,
+        popularity: movie?.popularity,
       });
       setIsSaved(true);
     } catch (error) {
@@ -64,9 +72,9 @@ const MovieDetails = () => {
     }
   };
 
-  const handleUnsave = async (movieId: number | undefined) => {
+  const handleUnsave = async (id: number | undefined) => {
     try {
-      await deleteSavedMovie(movieId as number);
+      await deleteSavedMovie(id as number);
       setIsSaved(false);
     } catch (error) {
       console.error("Failed to unsave movie:", error);
